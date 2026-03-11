@@ -18,9 +18,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -84,7 +86,8 @@ fun CalculadoraIMC(modifier: Modifier = Modifier) {
     }
     Column(
         modifier = modifier
-            .fillMaxSize(),
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         //header
@@ -253,7 +256,7 @@ fun CalculadoraIMC(modifier: Modifier = Modifier) {
             Button(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(150.dp)
+                    .height(100.dp)
                     .padding(vertical = 30.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(112, 66, 20, 255),
@@ -262,7 +265,6 @@ fun CalculadoraIMC(modifier: Modifier = Modifier) {
                 onClick = {
                     altura = ""
                     peso = ""
-
                 }
             ) {
                 Text(
