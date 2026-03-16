@@ -197,7 +197,7 @@ fun CalculadoraIMC(modifier: Modifier = Modifier) {
                             .height(50.dp)
                             .padding(horizontal = 30.dp),
                         onClick = {
-                            imc = peso.toDouble() / (Math.pow((altura.toDouble() / 100), 2.0))
+                            imc = CalcularImc(peso.toDouble(), altura.toDouble())
                             resultado = "%.2f".format(imc)
                         },
                         colors = ButtonDefaults.buttonColors(
@@ -236,15 +236,7 @@ fun CalculadoraIMC(modifier: Modifier = Modifier) {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = when{
-                            imc < 18.5 && imc > 0 -> "$resultado Abaixo do Peso"
-                            imc > 18.5 && imc < 25 -> "$resultado Peso ideal"
-                            imc >= 25 && imc < 30 -> "$resultado Levemente Acima do Peso"
-                            imc >= 30 && imc < 35 -> "$resultado Obesidade Grau I"
-                            imc >= 35 && imc < 40 -> "$resultado Obesidade Grau II"
-                            imc >= 40 -> "$resultado Obesidade Grau III"
-                            else -> "Imc Invalido"
-                        },
+                        text = "$resultado ${ValidarImc(imc)}",
                         fontSize = 27.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.White
@@ -257,7 +249,7 @@ fun CalculadoraIMC(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(100.dp)
-                    .padding(vertical = 30.dp),
+                    .padding(top = 30.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(112, 66, 20, 255),
                     contentColor = Color.White
